@@ -1,0 +1,14 @@
+//in.spasm: SPASM Assembly example file. Should evaluate to and print the number 2.
+
+start:
+
+add 1, 2
+sub out, 1
+mul out, 2
+div out, 2
+mov out, eax
+say eax
+
+hang:
+
+jmp start

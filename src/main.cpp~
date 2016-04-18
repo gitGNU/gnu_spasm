@@ -1,0 +1,39 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+#include "config.h"
+
+using namespace std;
+
+bool check_extension (char filename[]);
+bool is_correct_extension =  false;
+
+int main (int argc, char *argv[]) {
+
+  cout << "Welcome to SPASM, the SuPer ASseMbler, version number " << PACKAGE_VERSION << "!\n";
+
+  if (argc <= 1) {
+    cout << "No input files! Go write some SPASM!\n";
+  } else {
+    is_correct_extension = check_extension(argc[1]);
+    if (is_correct_extension == true) {
+      cout << "Reading file, " << argv[1] << "!\n";
+    } else {
+      cout << "Your file extension is not .spasm or .SPASM. Fix this.\n";
+    }
+  }
+
+  return 0;
+}
+
+bool check_extension (char filename[]) {
+  int len = strlen (filename);
+  char extension_original[] = filename[len - 6];
+  char extension_lower[] = toLower(extension_original);
+  if (strcmp (extension_lower, ".spasm") == 0){
+    return true;
+  } else {
+    return false;
+  }
+}
